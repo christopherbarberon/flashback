@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liste Stream Flashback</title>
+  <script src="https://embed.twitch.tv/embed/v1.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+    }
+    .container {
+      width: 95%;
+      margin: 20px auto;
+      background-color: #000;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .title {
+      background-color: #440808;
+      color: white;
+      padding: 15px;
+      font-size: 24px;
+      font-weight: bold;
+      width: fit-content;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .main-player {
+      width: 70%;
+      height: 600px;
+      margin: 0 auto 20px auto;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .scroll-streams {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      padding-bottom: 10px;
+    }
+    .stream-thumb {
+      min-width: 220px;
+      height: 100px;
+      background: #440808;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .stream-thumb:hover {
+      transform: scale(1.05);
+    }
+    .scroll-streams::-webkit-scrollbar {
+      height: 10px;
+    }
+    .scroll-streams::-webkit-scrollbar-track {
+      background: #ddd;
+      border-radius: 10px;
+    }
+    .scroll-streams::-webkit-scrollbar-thumb {
+      background: linear-gradient(90deg, #ad1515, #440808);
+      border-radius: 10px;
+    }
+    .scroll-streams::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(90deg, #ad1515, #440808);
+    }
+    /* Firefox */
+    .scroll-streams {
+      scrollbar-color: #440808 #000000;
+      scrollbar-width: thin;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">Liste Stream Flashback</div>
+
+    <!-- Player Twitch sans chat -->
+    <div id="twitch-player" class="main-player"></div>
+
+    <!-- Barre scroll horizontale -->
+    <div class="scroll-streams">
+      <div class="stream-thumb" onclick="changeStream('jltomy')">jltomy</div>
+      <div class="stream-thumb" onclick="changeStream('domingo')">domingo</div>
+      <div class="stream-thumb" onclick="changeStream('aenot')">aenot</div>
+      <div class="stream-thumb" onclick="changeStream('mehdoche')">mehdoche</div>
+      <div class="stream-thumb" onclick="changeStream('areliann')">areliann</div>
+      <div class="stream-thumb" onclick="changeStream('mrbboy45')">mrbboy45</div>
+      <div class="stream-thumb" onclick="changeStream('manglouste')">manglouste</div>
+      <div class="stream-thumb" onclick="changeStream('khadim')">khadim</div>
+      <div class="stream-thumb" onclick="changeStream('camaoo_')">camaoo_</div>
+      <div class="stream-thumb" onclick="changeStream('hakaiwrld')">hakaiwrld</div>
+      <div class="stream-thumb" onclick="changeStream('sludeina')">sludeina</div>
+      <div class="stream-thumb" onclick="changeStream('rewi_off')">rewi_off</div>
+      <div class="stream-thumb" onclick="changeStream('furax22')">furax22</div>
+      <div class="stream-thumb" onclick="changeStream('mouchoutv')">mouchoutv</div>
+      <div class="stream-thumb" onclick="changeStream('sanouk21')">sanouk21</div>
+      <div class="stream-thumb" onclick="changeStream('mrsal_59')">mrsal_59</div>
+      <div class="stream-thumb" onclick="changeStream('hayzaa')">hayzaa</div>
+      <div class="stream-thumb" onclick="changeStream('idater')">idater</div>
+    </div>
+  </div>
+
+  <script>
+    // Initialisation du player Twitch
+    let player = new Twitch.Embed("twitch-player", {
+        width: "100%",
+        height: "100%",
+        channel: "jltomy",   // chaîne par défaut
+        layout: "video",     // supprime le chat
+        parent: ["localhost"] // remplace par ton domaine en production
+    });
+
+    // Fonction pour changer de chaîne instantanément
+    function changeStream(channel) {
+        player.setChannel(channel);
+    }
+  </script>
+</body>
+</html>
